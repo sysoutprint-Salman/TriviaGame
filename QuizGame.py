@@ -8,14 +8,18 @@ def new_game():
         answers = new_answers(question_and_answer_set_index) #Current questions (2D list)
         correct_guesses = 0
         total_questions = 0
+        
         for question_num, (the_question, the_answer) in enumerate(questions.items(), start=1): #There is no such thing as a 0th question, so gotta start at 1
             print(the_question)
+            
             for choice in answers[question_num-1]:  # Accesses the individual choices from each list
                 print(choice)
+                
             guess = input('Enter A-D:\n').upper()
             is_correct = check_answer(guess, question_num, question_and_answer_set_index) #Checks guess for True or False
             if is_correct:
                 correct_guesses += 1
+                
             total_questions += 1
             time.sleep(1) #A 1-sec delay after each question
         score_and_play_again = display_score_and_play_again(correct_guesses, total_questions)
